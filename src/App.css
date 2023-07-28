@@ -1,0 +1,6 @@
+input[type="range"]{
+    appearance: none;   
+    cursor: pointer;
+    border-radius: 20px;
+    background: linear-gradient(to right, #ccfbf1, #dbeafe);
+}
