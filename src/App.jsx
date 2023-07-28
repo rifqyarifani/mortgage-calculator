@@ -12,10 +12,10 @@ export default function App() {
 
   function handleChangeCicilan(){
     const jumlahValue = jumlahPinjaman.value
-    const bungaValue = 1 + 1*(bungaPinjaman.value/100)
+    const bungaValue = (bungaPinjaman.value/100)/12;
     const tahunValue = (tahunPinjaman.value * 12)
 
-    setCicilan(jumlahValue * (bungaValue/tahunValue))
+    setCicilan( jumlahValue * (bungaValue *(1 + bungaValue) ** tahunValue)/((1 + bungaValue) ** tahunValue - 1))
   }
 
   function handleChangePinjaman(event){
@@ -43,7 +43,7 @@ export default function App() {
         <h1 className=' font-bold text-3xl mb-6'>Simulasi Pinjaman</h1>
         <div className=' bg-teal-600 mb-12 text-white flex flex-col items-center gap-4 p-2 rounded-lg border-sky-600 border-b-8'>
           <h3>Angsuran per bulan</h3>
-          <h2 className=' font-bold text-2xl'>Rp{rupiah.format(cicilan)}</h2>
+          <h2 className=' font-bold text-2xl'>Rp{rupiah.format(Math.floor(cicilan))}</h2>
           <h3>dari total pinjaman Rp{rupiah.format(pinjaman)}</h3>
         </div>
         <div className=' mb-4 w-full'>
