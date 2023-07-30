@@ -2,13 +2,23 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 export default function App() {
+  
+  const defaultValue = {
+    cicilan: 6363930,
+    pinjaman: 600000000,
+    tahun: 10,
+    bunga:5,
+  }
 
-  const [cicilan, setCicilan] = useState(5250000)
-  const [pinjaman, setPinjaman] = useState(600000000);
-  const [tahun, setTahun] = useState(10)
-  const [bunga, setBunga] = useState(5)
+  const [cicilan, setCicilan] = useState(defaultValue.cicilan)
+  const [pinjaman, setPinjaman] = useState(defaultValue.pinjaman);
+  const [tahun, setTahun] = useState(defaultValue.tahun)
+  const [bunga, setBunga] = useState(defaultValue.bunga)
 
   function handleChangeCicilan(){
     const jumlahValue = jumlahPinjaman.value
@@ -34,12 +44,13 @@ export default function App() {
     setBunga(event.target.value)
     handleChangeCicilan()
   }
-
-
   let rupiah = new Intl.NumberFormat('id-ID');
+
+
+
   return (
-    <div className=' flex flex-col items-center justify-center bg-gradient-to-r from-teal-100 via-cyan-100 to-blue-100 w-screen h-screen'>
-      <div className=' bg-white w-8/12 h-5/6 p-6 rounded-2xl border-t-8 border-teal-600'>
+    <div className=' flex flex-col items-center bg-gradient-to-r from-teal-100 via-cyan-100 to-blue-100 w-screen h-screen'>
+      <div className=' bg-white w-8/12 h-5/6 p-6 m-4 rounded-2xl border-t-8 border-teal-600'>
         <h1 className=' font-bold text-3xl mb-6'>Simulasi Pinjaman</h1>
         <div className=' bg-teal-600 mb-12 text-white flex flex-col items-center gap-4 p-2 rounded-lg border-sky-600 border-b-8'>
           <h3>Angsuran per bulan</h3>
@@ -66,6 +77,13 @@ export default function App() {
             <h2>{bunga}%</h2>
           </div>
           <input type="range" id='bungaPinjaman' min={3} max={15} step={1} onChange={handleChangeBunga} value={bunga}  className=' w-full'/>
+        </div>
+      </div>
+      <div className=' bg-slate-800 text-white w-full bottom-0 fixed flex justify-between p-6'>
+        <p>Copyright © 2023. All rights are reserved. Rifqy Arifani</p>
+        <div className=''>
+          <a href="https://github.com/rifqyarifani" className=' text-3xl mr-4' target='_blank'><FontAwesomeIcon icon={faGithub} /></a>
+          <a href="https://www.linkedin.com/in/rifqyarifani/" className=' text-3xl' target='_blank'><FontAwesomeIcon icon={faLinkedin} /></a>
         </div>
       </div>
     </div>
